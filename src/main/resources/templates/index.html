@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Billing Calculator</title>
+ 
+    <link 
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
+        rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="card-title text-center">Billing Calculator</h3>
+                    </div>
+                    <div class="card-body">
+                       
+                        <form action="/values" method="post">
+                            <div class="form-group">
+                                <label for="prices">Price per Item:</label>
+                                <input 
+                                    type="text" 
+                                    id="prices" 
+                                    name="prices" 
+                                    class="form-control" 
+                                    placeholder="Enter price" 
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="quantity">Quantity:</label>
+                                <input 
+                                    type="text" 
+                                    id="quantity" 
+                                    name="quantity" 
+                                    class="form-control" 
+                                    placeholder="Enter quantity" 
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="gst">GST (%):</label>
+                                <input 
+                                    type="text" 
+                                    id="gst" 
+                                    name="gst" 
+                                    class="form-control" 
+                                    placeholder="Enter GST percentage" 
+                                    required>
+                            </div>
+                            <button 
+                                type="submit" 
+                                class="btn btn-primary btn-block">
+                                Calculate
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card mt-4 shadow" th:if="${totalAmount != null}">
+                    <div class="card-header bg-success text-white">
+                        <h4 class="card-title text-center">Total ammount</h4>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Total Amount:</strong> <span th:text="${totalAmount}">0.0</span></p>
+                        <p><strong>GST Amount:</strong> <span th:text="${gstRate}">0.0</span></p>
+                        <p><strong>Grand Total:</strong> <span th:text="${grandTotal}">0.0</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script 
+        src="https://code.jquery.com/jquery-3.5.1.slim.min.js">
+    </script>
+    <script 
+        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js">
+    </script>
+    <script 
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
+    </script>
+</body>
+</html>
